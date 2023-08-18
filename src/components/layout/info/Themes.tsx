@@ -64,8 +64,8 @@ const getStorageColor = () => {
         </div>
         <h3 className="style__switcher-title">Style switcher</h3>
         <div className="style__switcher-items">
-          {themes.map((theme, index) => {
-            return <ThemeItem key={index} {...theme} changeColor={changeColor} />;
+          {themes.map((theme) => {
+            return <ThemeItem key={theme.id} {...theme} changeColor={changeColor} />;
           })}
         </div>
 

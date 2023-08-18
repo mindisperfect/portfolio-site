@@ -5,7 +5,8 @@ import Stats from "../../../components/layout/info/Stats";
 import "./about.scss";
 import Skills from "../../../components/layout/info/Skills";
 import { resume } from "../../../data";
-import ResumeItem from "../../../components/layout/info/ResumeItem";
+// import ResumeItem from "../../../components/layout/info/ResumeItem";
+import parse from "html-react-parser"
 
 const About = () => {
   return (
@@ -48,16 +49,40 @@ const About = () => {
         <h3 className="section__subtitle subtitle__center">Experience</h3>
         <div className="resume__container grid">
           <div className="resume__data">
-            {resume.map((val, i) => {
+            {resume.map((val) => {
               if (val.category === "experience") {
-                return <ResumeItem key={i} {...val} />
+                // return <ResumeItem key={i} {...val} />
+                return <div className="resume__item" key={val.id}>
+                <div className="resume__icon">
+                    {val.icon}
+                </div>
+                <span className="resume__date">{val.year}</span>
+                <h3 className="resume__subtitle">
+                    {parse(val.title)}
+                </h3>
+                <p className="resume__description">
+                    {val.desc}
+                </p>
+            </div>
               }
             })}
           </div>
           <div className="resume__data">
             {resume.map((val) => {
               if (val.category === "education") {
-                return <ResumeItem key={val.id} {...val} />
+                // return <ResumeItem key={val.id} {...val} />
+                return <div className="resume__item" key={val.id}>
+                <div className="resume__icon">
+                    {val.icon}
+                </div>
+                <span className="resume__date">{val.year}</span>
+                <h3 className="resume__subtitle">
+                    {parse(val.title)}
+                </h3>
+                <p className="resume__description">
+                    {val.desc}
+                </p>
+            </div>
               } 
             })}
           </div>

@@ -1,4 +1,4 @@
-import parse from "html-react-parser"
+// import parse from "html-react-parser"
 
 // interface ResumeType {
 //     icon: string;
@@ -8,21 +8,21 @@ import parse from "html-react-parser"
 //     id: number;
 // }
 
-const ResumeItem = ({icon, year, title, desc}) => {
-  return (
-    <div className="resume__item">
-        <div className="resume__icon">
-            {icon}
-        </div>
-        <span className="resume__date">{year}</span>
-        <h3 className="resume__subtitle">
-            {parse(title)}
-        </h3>
-        <p className="resume__description">
-            {desc}
-        </p>
-    </div>
-  )
-}
+// const ResumeItem = ({icon, year, title, desc}: ResumeType) => {
+//   return (
+//     <div className="resume__item">
+//         <div className="resume__icon">
+//             {icon}
+//         </div>
+//         <span className="resume__date">{year}</span>
+//         <h3 className="resume__subtitle">
+//             {parse(title)}
+//         </h3>
+//         <p className="resume__description">
+//             {desc}
+//         </p>
+//     </div>
+//   )
+// }
 
-export default ResumeItem
+// export default ResumeItem
