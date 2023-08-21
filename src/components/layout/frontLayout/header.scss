@@ -2,7 +2,6 @@
     position: fixed;
     inset-block: 0;
     left: -100%;
-    // background-color: white;
     background-color: var(--container-color);
     z-index: 100;
     width: 100%;
@@ -87,6 +86,9 @@
 }
 .nav__item {
     margin-block: 20px;
+}
+.auth__login__register {
+    margin-bottom: 70px;
 }
 .nav__link {
     padding: 0px;
