@@ -4,10 +4,9 @@ import { Spin, message } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import "../register/Login-register.scss";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import { FieldValues } from "react-hook-form";
 import { request } from "../../../server/request";
-import { REGISTER_TOKEN, TOKEN } from "../../../constants";
+import { USER, TOKEN } from "../../../constants";
 import Cookies from "js-cookie";
 
 const LoginP = () => {
@@ -25,17 +24,17 @@ const LoginP = () => {
       setLoading(true);
       const res = await request.post("auth/login", formData);
       Cookies.set(TOKEN, res.data.token);
-      Cookies.set(REGISTER_TOKEN, JSON.stringify(res.data.user));
-      if (res.data.user.role === "client") {
+      Cookies.set(USER, JSON.stringify(res.data.user));
+      if (res.data.user.role !== "user") {
         navigate("/dashboard");
       } else {
         message.error("Admin have to update your role to client !")
       }
     } catch (err) {
       if (err instanceof Error) {
-        toast.error(err.message);
+       console.log(err);    
       } else {
-        toast.error("An error occurred.");
+        console.log("error");    
       }
     } finally {
       setLoading(false)

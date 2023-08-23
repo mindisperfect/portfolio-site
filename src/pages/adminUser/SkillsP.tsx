@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Spin, Modal, Button, Form, Input, message } from "antd";
+import { Spin, Modal, Button, Form, Input, message, Empty } from "antd";
 import { LoadingOutlined, ExclamationCircleFilled } from "@ant-design/icons";
 import { request } from "../../server/request";
 import { CircularProgressbar } from "react-circular-progressbar";
@@ -7,7 +7,6 @@ import "react-circular-progressbar/dist/styles.css";
 import "../../pages/user/about/about.scss";
 import "../../components/styles/clientPanelStyles/skills.scss";
 import { SkillsType } from "../../types/types";
-import { useNavigate } from "react-router";
 
 const SkillsP = () => {
   const [skills, setSkills] = useState<SkillsType[]>([]);
@@ -16,7 +15,6 @@ const SkillsP = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
   const [, setEdit] = useState(null);
-  const navigate = useNavigate()
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -178,9 +176,9 @@ const SkillsP = () => {
         <section className="skills">
           <div className="skills__container grid" style={{ marginTop: "50px" }}>
             {skills.length == 0
-              ? "Nothing"
+              ? <Empty />
               : skills?.map((skill: SkillsType) => (
-                  <div className="progress__box" key={skill?._id}>
+                  <div className="progress__boxss" key={skill?._id}>
                     <div className="progress__circle">
                       <CircularProgressbar
                         strokeWidth={7.5}
@@ -209,3 +207,7 @@ const SkillsP = () => {
 };
 
 export default SkillsP;
+
+
+
+

@@ -12,3 +12,5 @@ export const request = axios.create({
   },
 });
 
+export const levels = ['Junior', 'Strong junior','Middle', 'Strong middle', 'Senior', 'None' ]
+

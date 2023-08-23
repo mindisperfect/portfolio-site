@@ -1,23 +1,33 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { MdNotificationsActive } from "react-icons/md";
+import { TiMessages } from "react-icons/ti";
+import {SiSkillshare} from "react-icons/si"
+import {MdOutlineCastForEducation, MdOutlineDashboardCustomize} from "react-icons/md"
+import Cookies from "js-cookie";
+import {AiOutlineMessage, AiFillHome} from "react-icons/ai"
 import { Layout, Menu, Button, theme, Avatar } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  DeleteOutlined
 } from "@ant-design/icons";
+import { TOKEN } from "../../../constants";
 
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const logout = () => {
+    Cookies.remove(TOKEN);
+    navigate("/");
+  };
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -30,14 +40,10 @@ const AdminLayout = () => {
         <Menu
           theme="dark"
           mode="inline"
-          // selectedKeys={[key]}
-          // onClick={({ key }) => {
-          //   setKey(key);
-          // }}
           items={[
             {
               key: "/dashboard",
-              icon: <UserOutlined />,
+              icon: <MdOutlineDashboardCustomize />,
               label: <Link to="/dashboard">Dashboard</Link>,
             },
             {
@@ -47,7 +53,7 @@ const AdminLayout = () => {
             },
             {
               key: "/messages",
-              icon: <UploadOutlined />,
+              icon: <AiOutlineMessage />,
               label: <Link to="/messages">Messages</Link>,
             },
             {
@@ -57,22 +63,23 @@ const AdminLayout = () => {
             },
             {
               key: "/skills",
-              icon: <UserOutlined />,
+              icon: <SiSkillshare/>,
               label: <Link to="/skills">Skills</Link>,
             },
             {
               key: "/education",
-              icon: <UserOutlined />,
+              icon: <MdOutlineCastForEducation />,
               label: <Link to="/education">Education</Link>,
             },
-            // {
-            //   icon: <UploadOutlined />,
-            //   label: (
-            //     <Button onClick={logout} type="primary" danger>
-            //       Logout
-            //     </Button>
-            //   ),
-            // },
+            {
+              key: "logout",
+              icon: <DeleteOutlined /> ,
+              label: (
+                <Button onClick={logout} type="primary" danger>
+                  Logout
+                </Button>
+              ),
+            },
           ]}
         />
       </Sider>
@@ -96,13 +103,26 @@ const AdminLayout = () => {
               height: 64,
             }}
           />
-          <div className="notification">
-          <Link to="/messages" style={{ marginRight: "20px" }}>
-            <Avatar shape="square" size={32} icon={<MdNotificationsActive />} />
-          </Link>
-          <Link to="/admin-account" style={{ marginRight: "150px" }}>
-            <Avatar shape="square" size={32} icon={<UserOutlined />} />
-          </Link>
+          <div
+            className="notification"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyItems: "end",
+            }}
+          >
+            <Link to="/home" style={{ marginRight: "20px" }}>
+              <Avatar shape="square" size={40} icon={<AiFillHome />} />
+            </Link>
+            <Link to="/messages" style={{ marginRight: "20px" }}>
+              <Avatar shape="square" size={40} icon={<TiMessages />} />
+            </Link>
+            <Link
+              to="/admin-account"
+              style={{ marginRight: "210px", borderRadius: "50px" }}
+            >
+              <Avatar shape="square" size={40} icon={<UserOutlined />} />
+            </Link>
           </div>
         </Header>
         <Content

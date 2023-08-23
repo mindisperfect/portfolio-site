@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import "./Login-register.scss";
@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { FieldValues } from "react-hook-form";
 import { request } from "../../../server/request";
-import { REGISTER_TOKEN, TOKEN } from "../../../constants";
+import { USER, TOKEN } from "../../../constants";
 import Cookies from "js-cookie";
 
 const Register = () => {
@@ -25,12 +25,12 @@ const Register = () => {
       setLoading(true);
      const res = await request.post("auth/register", formData);
      Cookies.set(TOKEN, res.data.token);
-      Cookies.set(REGISTER_TOKEN, JSON.stringify(res.data.user));
+      Cookies.set(USER, JSON.stringify(res.data.user));
       console.log(res);
       navigate("/login");
     } catch (err) {
       if (err instanceof Error) {
-        toast.error(err.message);
+        console.log(err);  
       } else {
         toast.error("An error occurred.");
       }
@@ -93,6 +93,9 @@ const Register = () => {
             <button className="button" type="submit">
               Register
             </button>
+            <div className="advice-box">
+            <h1 className="advice">If you have account   <Link to="/login">Login</Link></h1>
+            </div>
           </div>
         </form>
       )}

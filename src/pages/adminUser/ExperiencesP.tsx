@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Spin, Modal, Button, Form, Input, message } from "antd";
 import { LoadingOutlined, ExclamationCircleFilled } from "@ant-design/icons";
 import { request } from "../../server/request";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "../../pages/user/about/about.scss";
 import "../../components/styles/clientPanelStyles/skills.scss";
@@ -219,8 +218,9 @@ const ExperiencesP = () => {
               : skills?.map((skill: ExperienceType) => (
                   <div className="expereince__card" key={skill?._id}>
                     <h1>{skill?.workName}</h1>
-                    <h2>{skill?.companyName}</h2>
-                    <p>{skill?.description}</p>
+                    <h1>{skill?.companyName}</h1>
+                    <div className="experience__content">
+                    <h4 className="desc-part">{skill?.description}</h4>
                     <div style={{display: "flex", alignItems: "center", gap: "20px"}}>
                       <p>{skill?.startDate.split("T")[0]}</p>
                       <p>{skill?.endDate.split("T")[0]}</p>
@@ -234,6 +234,7 @@ const ExperiencesP = () => {
                       <Button danger onClick={() => deletePost(skill?._id)}>
                         Delete
                       </Button>
+                    </div>
                     </div>
                   </div>
                 ))}
