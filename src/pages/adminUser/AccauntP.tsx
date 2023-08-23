@@ -1,8 +1,5 @@
-import { Button, Col, Form, Input, Row, Tabs, Upload, message } from "antd"
-import { useState, Fragment, useCallback, useEffect, ChangeEvent } from "react"
-
-import { IMG_URL } from "../../constants"
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Col, Form, Input, Row, Tabs, message } from "antd"
+import { useState, Fragment, useCallback, useEffect } from "react"
 import { request } from "../../server/request";
 import { setAuthCookies } from "../../utils/setAuthCookies";
 import { AccountValuesType } from "../../types/types";
@@ -32,63 +29,18 @@ const AccountP = () => {
 
 const Information = () => {
   const [form] = useForm();
-  const [imgLoading, setImgLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [callback, setCallback] = useState(false);
 
   const getUserData = useCallback(() => {
     request("auth/me").then(({ data }) => {
       form.setFieldsValue(data);
-      setImageUrl(data.photo);
     });
   }, [form]);
 
   useEffect(() => {
     getUserData();
-  }, [callback, getUserData]);
-
-  const handleChange = async (e) => {
-    try {
-      setImgLoading(true);
-      const form = new FormData();
-      form.append("file", e.file.originFileObj);
-      await request.post("auth/upload", form);
-      const res = await request.post("upload", form);
-      console.log(res);
-      setCallback(!callback);
-      getUserData();
-    } catch (err) {
-      console.log(err);   
-    } finally {
-      setImgLoading(false);
-    }
-  };
-
-// const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
-//   try {
-//     setImgLoading(true);
-//     const files = e.target?.files;
-//     if (files) {
-//       const form = new FormData();
-//       // form.append("file", e.target.files[0]);
-//       // await request.post("auth/upload", form);
-//       form.append("file", files[0]);
-//       await request.post("auth/upload", form);
-//       const res = await request.post("upload", form);
-//       console.log(res);
-//       setCallback(!callback);
-//       getUserData();
-//     } else {
-//       console.log("No file selected");
-//     }
-//   } catch (err) {
-//     console.log(err);   
-//   } finally {
-//     setImgLoading(false);
-//   }
-// };
-
+  }, [getUserData]);
+  
   const submit = async (values: string) => {
     try {
       setLoading(true);
@@ -104,28 +56,6 @@ const Information = () => {
   return (
     <div className="container">
     <Row>
-      <Col lg={6}>
-         <Upload
-          name="photo"
-          listType="picture-card"
-          className="avatar-uploader"
-          showUploadList={false}
-          onChange={handleChange}
-        >
-          {imageUrl ? (
-            <img
-              src={IMG_URL + imageUrl}
-              alt="avatar"
-              style={{
-                width: "100%",
-              }} /> ) : (
-            <div>
-              {imgLoading ? <LoadingOutlined /> : <PlusOutlined />}
-              <div style={{ marginTop: 8, }} > Upload </div>
-            </div>
-          )}
-        </Upload> 
-      </Col>
       <Col lg={18}>
         <Form
           form={form}

@@ -8,7 +8,6 @@ import {
 } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import "./contact.scss";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { request } from "../../../server/request";
 import { FieldValues } from "react-hook-form";
@@ -17,7 +16,6 @@ import { message } from "antd";
 
 const Contact = () => {
   const { register, handleSubmit } = useForm();
-  const [loading, setLoading] = useState(false);
 
   type SubmitHandler<T> = (
     data: T,
@@ -35,9 +33,7 @@ const Contact = () => {
       } else {
         toast.error("An error occurred.");
       }
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   return (

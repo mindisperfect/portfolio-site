@@ -75,4 +75,4 @@ export interface MessagesType {
   message: string;
   whom: UserInfo;
   user: string
-}
+} 
