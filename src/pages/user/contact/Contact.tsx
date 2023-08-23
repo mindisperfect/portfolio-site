@@ -8,8 +8,38 @@ import {
 } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import "./contact.scss";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { request } from "../../../server/request";
+import { FieldValues } from "react-hook-form";
+import { toast } from "react-toastify";
+import { message } from "antd";
 
 const Contact = () => {
+  const { register, handleSubmit } = useForm();
+  const [loading, setLoading] = useState(false);
+
+  type SubmitHandler<T> = (
+    data: T,
+    event?: React.BaseSyntheticEvent
+  ) => void | Promise<void>;
+
+  const submit: SubmitHandler<FieldValues> = async (formData) => {
+    console.log(formData);
+    try {
+      await request.post("messages", formData);
+      message.success("Your message successfully has sent to admin !");
+    } catch (err) {
+      if (err instanceof Error) {
+        console.log(err);
+      } else {
+        toast.error("An error occurred.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="section contact">
       <h2 className="section__title">Contact</h2>
@@ -58,34 +88,37 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <form className="contact__form">
+        <form className="contact__form" onSubmit={handleSubmit(submit)}>
           <div className="form__input-group">
             <div className="form__input-div">
               <input
                 type="text"
                 placeholder="Your name"
                 className="form__control"
-              />
-            </div>
-            <div className="form__input-div">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="form__control"
+                {...register("user", {
+                  required: "User is required",
+                })}
               />
             </div>
             <div className="form__input-div">
               <input
                 type="text"
-                placeholder="Your Subject"
+                placeholder="Title"
                 className="form__control"
+                {...register("title", {
+                  required: "Title is required",
+                })}
               />
             </div>
+            <div className="form__input-div"></div>
           </div>
           <div className="form__input-div">
             <textarea
               placeholder="Message"
               className="form__control textarea"
+              {...register("message", {
+                required: "Message is required",
+              })}
             ></textarea>
           </div>
           <button className="button" type="submit">

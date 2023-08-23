@@ -243,6 +243,17 @@ const Information = () => {
             ]} >
             <Input />
           </Form.Item>
+          <Form.Item
+            name="fields"
+            label="Fields"
+            rules={[
+              {
+                required: true,
+                message: "Please fill this field !",
+              },
+            ]} >
+            <Input />
+          </Form.Item>
           <Form.Item>
             <Button loading={loading} htmlType="submit" type="primary">
               Save

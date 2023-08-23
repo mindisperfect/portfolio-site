@@ -23,19 +23,18 @@ const Register = () => {
   const submit: SubmitHandler<FieldValues> = async (formData) => {
     try {
       setLoading(true);
-     const res = await request.post("auth/register", formData);
-     Cookies.set(TOKEN, res.data.token);
+      const res = await request.post("auth/register", formData);
+      Cookies.set(TOKEN, res.data.token);
       Cookies.set(USER, JSON.stringify(res.data.user));
-      console.log(res);
       navigate("/login");
     } catch (err) {
       if (err instanceof Error) {
-        console.log(err);  
+        console.log(err);
       } else {
         toast.error("An error occurred.");
       }
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -94,7 +93,9 @@ const Register = () => {
               Register
             </button>
             <div className="advice-box">
-            <h1 className="advice">If you have account   <Link to="/login">Login</Link></h1>
+              <h1 className="advice">
+                If you have account <Link to="/login">Login</Link>
+              </h1>
             </div>
           </div>
         </form>

@@ -5,6 +5,7 @@ import { request } from "../../../server/request";
 import { SkillsType } from "../../../types/types";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Empty, Spin } from "antd";
+import { ROLE, USER_ID } from "../../../utils/setAuthCookies";
 
 const Skills = () => {
   const [skill, setSkill] = useState([]);
@@ -13,7 +14,7 @@ const Skills = () => {
   const getSkills = async () => {
     try {
       const { data } = await request.get(
-        "skills?user=64dde9e1dccb1b00143b2e8e"
+        `skills${ROLE === "client" ? `?user[in]=${USER_ID}` : ""}`
       );
       setSkill(data?.data);
       setLoading(true);

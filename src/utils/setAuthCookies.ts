@@ -17,3 +17,15 @@ if (typeof storedValue === 'string' && storedValue) {
 }
 export { ROLE };
 
+const userData = Cookies.get(USER);
+let parseId: string | undefined;
+
+if (userData) {
+  const parsedUserData = JSON.parse(userData);
+  parseId = parsedUserData?._id;
+}
+
+export const USER_ID = parseId;
+
+
+

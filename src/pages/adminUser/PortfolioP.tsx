@@ -8,6 +8,7 @@ import "../../components/styles/clientPanelStyles/education.scss";
 import { PortfolioType } from "../../types/types";
 import { Link } from "react-router-dom";
 import { IMG_URL } from "../../constants";
+import { ROLE, USER_ID } from "../../utils/setAuthCookies";
 
 const PortfolioP = () => {
   const [skills, setSkills] = useState<PortfolioType[]>([]);
@@ -29,7 +30,7 @@ const PortfolioP = () => {
   const getPortfolios = async () => {
     try {
       const { data } = await request.get(
-        "portfolios?user=64dde9e1dccb1b00143b2e8e"
+        `portfolios${ROLE === "client" ? `?user[in]=${USER_ID}` : ""}`
       );
       setLoading(true);
       setSkills(data?.data);
@@ -257,9 +258,9 @@ const PortfolioP = () => {
                 <div className="expereince__card" key={skill?._id}>
                   <img
                     src={`${IMG_URL + skill?.photo?._id}.${
-                      skill?.photo?.name.split(".")[1]
+                      skill?.photo?.name?.split(".")[1]
                     }`}
-                    alt=""
+                    alt="img"
                     height={150}
                   />
                   <div className="content__portfolio">

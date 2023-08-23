@@ -52,10 +52,11 @@ position: relative;
 .item__title,
 .item__details {
 color: var(--title-color);
-font-size: var(--small-font-size);
+font-size: var(--h4-font-size);
 }
 
 .item__details {
+    padding-top: 10px;
     font-weight: var(--weight-500);
 }
 
@@ -70,11 +71,16 @@ font-size: var(--small-font-size);
 
 }
 
+.conetss {
+    padding: 0px 15px 10px;
+}
+
 .portfolio__item {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
+    border: 1px solid var(--border-color);
 }
 
 .portfolio__item:hover .portfolio__hover {

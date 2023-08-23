@@ -1,5 +1,4 @@
 import PortfolioItem from "../../../components/layout/info/PortfolioItem"
-import { portfolio } from "../../../data"
 import "./portfolio.scss"
 
 const Portfolio = () => {
@@ -9,9 +8,7 @@ const Portfolio = () => {
         My <span>Portfolio</span>
       </h2>
       <div className="portfolio__container container grid">
-        {portfolio.map((item) => {
-          return <PortfolioItem key={item.id} {...item} />
-        })}
+           <PortfolioItem />
       </div>
     </section>
   )

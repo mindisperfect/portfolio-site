@@ -6,6 +6,7 @@ import "react-circular-progressbar/dist/styles.css";
 import "../../pages/user/about/about.scss";
 import "../../components/styles/clientPanelStyles/education.scss";
 import { EducationType } from "../../types/types";
+import { ROLE, USER_ID } from "../../utils/setAuthCookies";
 
 const EducationP = () => {
   const [skills, setSkills] = useState<EducationType[]>([]);
@@ -25,8 +26,7 @@ const EducationP = () => {
   const getExperiences = async () => {
     try {
       const { data } = await request.get(
-        // `skills${ROLE === 'client' ? `?user[in]=${USER_ID}` : ''}`
-        "education?user=64dde9e1dccb1b00143b2e8e"
+        `education${ROLE === "client" ? `?user[in]=${USER_ID}` : ""}`
       );
       setLoading(true);
       setSkills(data?.data);

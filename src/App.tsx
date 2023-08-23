@@ -39,16 +39,16 @@ function App() {
           <Route path="contact" element={<Contact />} />
         </Route>
         {isAutheticated && (
-          <>      
-        <Route path="/" element={<AdminLayout />}>
-         <Route path="dashboard" element={<DashboardP />} />
-         <Route path="experiences" element={<ExperiencesP />} />
-         <Route path="messages" element={<MessagesP />} />
-         <Route path="portfolios" element={<PortfolioP />} />
-         <Route path="skills" element={<SkillsP />} />
-         <Route path="education" element={<EducationP />} />
-         <Route path="admin-account" element={<AccountP />} />
-        </Route>
+          <>
+            <Route path="/" element={<AdminLayout />}>
+              <Route path="dashboard" element={<DashboardP />} />
+              <Route path="experiences" element={<ExperiencesP />} />
+              <Route path="messages" element={<MessagesP />} />
+              <Route path="portfolios" element={<PortfolioP />} />
+              <Route path="skills" element={<SkillsP />} />
+              <Route path="education" element={<EducationP />} />
+              <Route path="admin-account" element={<AccountP />} />
+            </Route>
           </>
         )}
         <Route path="*" element={<NotFoundP />} />

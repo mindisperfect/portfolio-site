@@ -6,7 +6,7 @@ import "react-circular-progressbar/dist/styles.css";
 import "../../pages/user/about/about.scss";
 import "../../components/styles/clientPanelStyles/skills.scss";
 import { ExperienceType } from "../../types/types";
-
+import { ROLE, USER_ID } from "../../utils/setAuthCookies";
 
 const ExperiencesP = () => {
   const [skills, setSkills] = useState<ExperienceType[]>([]);
@@ -26,8 +26,7 @@ const ExperiencesP = () => {
   const getExperiences = async () => {
     try {
       const { data } = await request.get(
-        // `skills${ROLE === 'client' ? `?user[in]=${USER_ID}` : ''}`
-        "experiences?user=64dde9e1dccb1b00143b2e8e"
+        `experiences${ROLE === "client" ? `?user[in]=${USER_ID}` : ""}`
       );
       setLoading(true);
       setSkills(data?.data);
@@ -44,19 +43,28 @@ const ExperiencesP = () => {
   const onFinish = async (values: ExperienceType) => {
     try {
       const { workName, companyName, description, startDate, endDate } = values;
-      const experienceData = { workName, companyName, description, startDate, endDate };
+      const experienceData = {
+        workName,
+        companyName,
+        description,
+        startDate,
+        endDate,
+      };
       if (selected) {
-        const response = await request.put(`experiences/${selected}`, experienceData);
+        const response = await request.put(
+          `experiences/${selected}`,
+          experienceData
+        );
         if (response.status === 200) {
           getExperiences();
           hideModal();
-        } 
+        }
       } else {
         const response = await request.post("experiences", experienceData);
         if (response.status === 201) {
           getExperiences();
           hideModal();
-          message.success('You can also check here')
+          message.success("You can also check here");
         }
       }
     } catch (err) {
@@ -65,13 +73,19 @@ const ExperiencesP = () => {
   };
 
   const setEditingValues = (data: ExperienceType) => {
-    form.setFieldsValue({ workName: data.workName, companyName: data.companyName, description: data.description, startDate: data.startDate, endDate: data.endDate });
+    form.setFieldsValue({
+      workName: data.workName,
+      companyName: data.companyName,
+      description: data.description,
+      startDate: data.startDate,
+      endDate: data.endDate,
+    });
   };
 
   const openModal = () => {
     showModal();
     form.resetFields();
-    setSelected(null)
+    setSelected(null);
   };
 
   async function editSkill(id: string) {
@@ -126,31 +140,31 @@ const ExperiencesP = () => {
             onFinish={onFinish}
             form={form}
           >
-            <div style={{display: "flex", alignItems: "center", gap: "20px"}}>
-            <Form.Item
-              name="workName"
-              label="Work name"
-              rules={[
-                {
-                  required: true,
-                  message: "Name is required",
-                },
-              ]}
-            >
-              <Input placeholder="Enter a work name" />
-            </Form.Item>
-            <Form.Item
-              name="companyName"
-              label="Company name"
-              rules={[
-                {
-                  required: true,
-                  message: "Company name is required",
-                },
-              ]}
-            >
-              <Input type="text" placeholder="Company name" />
-            </Form.Item>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+              <Form.Item
+                name="workName"
+                label="Work name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Name is required",
+                  },
+                ]}
+              >
+                <Input placeholder="Enter a work name" />
+              </Form.Item>
+              <Form.Item
+                name="companyName"
+                label="Company name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Company name is required",
+                  },
+                ]}
+              >
+                <Input type="text" placeholder="Company name" />
+              </Form.Item>
             </div>
             <Form.Item
               name="description"
@@ -187,7 +201,7 @@ const ExperiencesP = () => {
               ]}
             >
               <Input placeholder="Enter a End date" type="date" />
-            </Form.Item>      
+            </Form.Item>
             <Button
               danger
               type="primary"
@@ -220,21 +234,28 @@ const ExperiencesP = () => {
                     <h1>{skill?.workName}</h1>
                     <h1>{skill?.companyName}</h1>
                     <div className="experience__content">
-                    <h4 className="desc-part">{skill?.description}</h4>
-                    <div style={{display: "flex", alignItems: "center", gap: "20px"}}>
-                      <p>{skill?.startDate.split("T")[0]}</p>
-                      <p>{skill?.endDate.split("T")[0]}</p>
-                    </div>
-                    <div className="btns">
-                      <Button
-                        type="primary"
-                        onClick={() => editSkill(skill?._id)} >
-                        Edit
-                      </Button>
-                      <Button danger onClick={() => deletePost(skill?._id)}>
-                        Delete
-                      </Button>
-                    </div>
+                      <h4 className="desc-part">{skill?.description}</h4>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "20px",
+                        }}
+                      >
+                        <p>{skill?.startDate.split("T")[0]}</p>
+                        <p>{skill?.endDate.split("T")[0]}</p>
+                      </div>
+                      <div className="btns">
+                        <Button
+                          type="primary"
+                          onClick={() => editSkill(skill?._id)}
+                        >
+                          Edit
+                        </Button>
+                        <Button danger onClick={() => deletePost(skill?._id)}>
+                          Delete
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 ))}

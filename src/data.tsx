@@ -26,7 +26,7 @@ export const auth = [
     id: 1,
     name: 'Register',
     icon: <BiRegistered className='nav__icon' />,
-    path: '/register',
+    path: '/',
   },
 
   {
@@ -42,7 +42,7 @@ export const links = [
     id: 1,
     name: 'Home',
     icon: <FaHome className='nav__icon' />,
-    path: '/',
+    path: '/home',
   },
 
   {

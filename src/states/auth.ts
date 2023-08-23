@@ -2,7 +2,7 @@ import { NavigateFunction } from "react-router-dom";
 import { create } from "zustand";
 import Cookies from "js-cookie";
 
-import { ROLE, TOKEN } from "../constants";
+import { USER, TOKEN } from "../constants";
 
 import { message } from "antd";
 import { request } from "../server/request";
@@ -19,7 +19,7 @@ type AuthTypes = {
 };
 
 export const useAuth = create<AuthTypes>((set) => ({
-  role: Cookies.get(ROLE) || null,
+  role: Cookies.get(USER) || null,
   isAutheticated: Cookies.get(TOKEN) ? true : false,
   login: async (data, navigate) => {
     try {

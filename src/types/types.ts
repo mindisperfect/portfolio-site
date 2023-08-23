@@ -44,6 +44,35 @@ export interface PortfolioType {
 }
 
 export interface AccountValuesType {
-  currentPassword: number,
-    newPassword: number
+  currentPassword: number;
+  newPassword: number;
+}
+
+export interface PersonalInfoType {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  info: string;
+  phoneNumber: string;
+  birthday: string;
+  address: string;
+  email: string;
+  github: string;
+  telegram: string;
+}
+
+interface UserInfo {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+}
+
+export interface MessagesType {
+  _id: string;
+  title: string;
+  message: string;
+  whom: UserInfo;
+  user: string
 }
