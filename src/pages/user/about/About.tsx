@@ -1,5 +1,4 @@
 import { FaDownload } from "react-icons/fa";
-import Info from "../../../components/layout/info/Info";
 import CV from "../../../assets/images/steve-Cv.pdf";
 import Stats from "../../../components/layout/info/Stats";
 import "./about.scss";
@@ -46,7 +45,6 @@ const About = () => {
             <h3 className="section__subtitle">Personal info</h3>
 
             <ul className="info__list grid">
-              <Info />
             </ul>
 
             <a href={CV} download="" className="button">

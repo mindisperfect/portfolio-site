@@ -74,41 +74,41 @@
 // }
 
 
-import { useEffect, useState } from "react";
-import { request } from "../../../server/request";
+// import { useEffect, useState } from "react";
+// import { request } from "../../../server/request";
 
-const Info = () => {
-  const [infos, setInfo] = useState([]);
+// const Info = () => {
+//   const [infos, setInfo] = useState([]);
 
-  const getInfosss = async () => {
-    try {
-      const { data } = await request.get("users/64dde9e1dccb1b00143b2e8e");
-      console.log(data);
-      setInfo(data?.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  useEffect(() => {
-    getInfosss();
-  }, []);
+//   const getInfosss = async () => {
+//     try {
+//       const { data } = await request.get("users/64dde9e1dccb1b00143b2e8e");
+//       console.log(data);
+//       setInfo(data?.data);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+//   useEffect(() => {
+//     getInfosss();
+//   }, []);
 
-  return (
-    <>
-        {infos?.map((el) => {
-          return (
-            <li className="info__item" key={el?._id}>
-            <span className="info__title"></span>
-            <span className="info__description">
-              First name : {el?.firstName}
-            </span>
-          </li>
-          )
-        })}
+//   return (
+//     <>
+//         {infos?.map((el) => {
+//           return (
+//             <li className="info__item" key={el?._id}>
+//             <span className="info__title"></span>
+//             <span className="info__description">
+//               First name : {el?.firstName}
+//             </span>
+//           </li>
+//           )
+//         })}
 
-      {/* {JSON.stringify(infos)}  */}
-    </>
-  );
-};
+//       {/* {JSON.stringify(infos)}  */}
+//     </>
+//   );
+// };
 
-export default Info;
+// export default Info;
