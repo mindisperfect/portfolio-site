@@ -7,8 +7,10 @@ import { FieldValues } from "react-hook-form";
 import { request } from "../../../server/request";
 import { USER, TOKEN } from "../../../constants";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router";
 
 const LoginP = () => {
+  const navigate = useNavigate()
   const { register, handleSubmit } = useForm();
 
   const [loading, setLoading] = useState(false);
@@ -25,7 +27,7 @@ const LoginP = () => {
       Cookies.set(TOKEN, res.data.token);
       Cookies.set(USER, JSON.stringify(res.data.user));
       if (res.data.user.role !== "user") {
-        window.location.href = "/dashboard"
+        navigate("/dashbaord")
       } else {
         message.error("Admin have to update your role to client !")
       }
