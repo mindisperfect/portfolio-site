@@ -74,41 +74,42 @@
 // }
 
 
-// import { useEffect, useState } from "react";
-// import { request } from "../../../server/request";
 
-// const Info = () => {
-//   const [infos, setInfo] = useState([]);
-
-//   const getInfosss = async () => {
-//     try {
-//       const { data } = await request.get("users/64dde9e1dccb1b00143b2e8e");
-//       console.log(data);
-//       setInfo(data?.data);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-//   useEffect(() => {
-//     getInfosss();
-//   }, []);
-
+// const Info = ({ user }) => {
 //   return (
 //     <>
-//         {infos?.map((el) => {
-//           return (
-//             <li className="info__item" key={el?._id}>
-//             <span className="info__title"></span>
-//             <span className="info__description">
-//               First name : {el?.firstName}
-//             </span>
-//           </li>
-//           )
-//         })}
+        {/* {infos?.map((el: InfosType) => {
+          return (
+        //     <li className="info__item" key={el?._id}>
+        //     <span className="info__title"></span>
+        //     <span className="info__description">
+        //       First name : {el?.firstName}
+        //     </span>
+        //   </li>
+        <li className="info__item" key={el?._id}>
+            {el?.firstName}
+          </li>
+          )
+        })} */}
+      {/* <p>First Name: {user.firstName}</p>
+      <p>Last Name: {user.lastName}</p>
+      <p>Email: {user.email}</p>
+      <p>Birthday: {user.birthday}</p>
+      <p>Address: {user.address}</p>
+      <p>Phone Number: {user.phoneNumber}</p>
+      <p>Github: {user.github}</p>
+      <p>Telegram: {user.telegram}</p>
+      <p>Info: {user.info}</p>
+      <p>Role: {user.role}</p>
+      <p>Created At: {user.createdAt}</p>
+      <p>GitHub: {user.github}</p>
+      <p>Fields: {user.fields.join(', ')}</p> */}
+      {/* <img src={user.photo} alt="User Photo" /> */}
 
-//       {/* {JSON.stringify(infos)}  */}
-//     </>
-//   );
-// };
+{/* 
+      {JSON.stringify(infos)}  */}
+    {/* </>
+  );
+};
 
-// export default Info;
+export default Info; */}

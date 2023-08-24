@@ -27,7 +27,7 @@ const LoginP = () => {
       Cookies.set(TOKEN, res.data.token);
       Cookies.set(USER, JSON.stringify(res.data.user));
       if (res.data.user.role !== "user") {
-        navigate("/dashbaord")
+        navigate("/dashboard")
       } else {
         message.error("Admin have to update your role to client !")
       }

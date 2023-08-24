@@ -10,9 +10,11 @@ import Experiences from "../../../components/layout/info/Experiences";
 import { ROLE, USER_ID } from "../../../utils/setAuthCookies";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
+// import Info from "../../../components/layout/info/Info";
 
 const About = () => {
   const [experiences, setExperiences] = useState([]);
+  // const [infos, setInfo] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const getExperiences = async () => {
@@ -33,6 +35,19 @@ const About = () => {
     getExperiences();
   }, []);
 
+  const getInfosss = async () => {
+    try {
+      const { data } = await request.get("auth/me");
+      console.log(data);
+      // setInfo(data?.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getInfosss();
+  }, []);
+
   const antIcon = <LoadingOutlined style={{ fontSize: 48 }} spin />;
   return (
     <main className="section container">
@@ -45,6 +60,7 @@ const About = () => {
             <h3 className="section__subtitle">Personal info</h3>
 
             <ul className="info__list grid">
+             {/* {infos?.map((item) => <Info key={item?._id} {...item} />)} */}
             </ul>
 
             <a href={CV} download="" className="button">
@@ -59,7 +75,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      <div className="separator"></div>
+      <div className="separator"></div> 
 
       <section className="skills">
         <h3 className="section__subtitle subtitle__center">My Skills</h3>

@@ -76,3 +76,17 @@ export interface MessagesType {
   whom: UserInfo;
   user: string
 } 
+
+export interface InfosType {
+    firstName: string;
+  lastName: string;
+  username: string;
+  info: string;
+  phoneNumber: string;
+  birthday: string;
+  address: string;
+  email: string;
+  github: string;
+  telegram: string;
+  _id: string;
+}
