@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Spin, message } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import "../register/Login-register.scss";
@@ -11,7 +10,7 @@ import Cookies from "js-cookie";
 
 const LoginP = () => {
   const { register, handleSubmit } = useForm();
-  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
 
   type SubmitHandler<T> = (
