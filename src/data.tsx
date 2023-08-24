@@ -71,43 +71,43 @@ export const personalInfo = [
   {
     id: 1,
     title: 'First Name : ',
-    description: 'Steve',
+    description: 'Shahzod',
   },
 
   {
     id: 2,
     title: 'Last Name : ',
-    description: 'Milner',
+    description: 'Shermatov',
   },
 
   {
     id: 3,
     title: 'Age : ',
-    description: '27 Years',
+    description: '17 Years',
   },
 
   {
     id: 4,
     title: 'Nationality : ',
-    description: 'Tunisian',
+    description: 'Uzbekistan',
   },
 
   {
     id: 5,
     title: 'Freelance : ',
-    description: 'Available',
+    description: 'Non Available',
   },
 
   {
     id: 6,
     title: 'Address : ',
-    description: 'Tunis',
+    description: 'Tashkent',
   },
 
   {
     id: 7,
     title: 'Phone : ',
-    description: '+21621184010',
+    description: '+998977550840',
   },
 
   {
@@ -119,13 +119,13 @@ export const personalInfo = [
   {
     id: 9,
     title: 'Skype : ',
-    description: 'steve.milner',
+    description: 'shahzod.shermatov',
   },
 
   {
     id: 10,
     title: 'Langages : ',
-    description: 'French, English',
+    description: 'Russian, English',
   },
 ];
 

@@ -10,7 +10,7 @@ import Experiences from "../../../components/layout/info/Experiences";
 import { ROLE, USER_ID } from "../../../utils/setAuthCookies";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
-// import Info from "../../../components/layout/info/Info";
+import Info from "../../../components/layout/info/Info";
 
 const About = () => {
   const [experiences, setExperiences] = useState([]);
@@ -34,6 +34,8 @@ const About = () => {
   useEffect(() => {
     getExperiences();
   }, []);
+
+
 
   const getInfosss = async () => {
     try {
@@ -60,7 +62,7 @@ const About = () => {
             <h3 className="section__subtitle">Personal info</h3>
 
             <ul className="info__list grid">
-             {/* {infos?.map((item) => <Info key={item?._id} {...item} />)} */}
+             <Info />
             </ul>
 
             <a href={CV} download="" className="button">
