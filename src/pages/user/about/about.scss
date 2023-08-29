@@ -3,6 +3,16 @@
     align-items: flex-start;
 }
 
+.title__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+// .resume__data {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr;
+// }
+
 .info__list {
     row-gap: 20px;
     margin-bottom: 32px;

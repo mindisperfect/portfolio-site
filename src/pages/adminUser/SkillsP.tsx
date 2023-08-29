@@ -50,13 +50,14 @@ const SkillsP = () => {
         if (response.status === 200) {
           getSkills();
           hideModal();
+          message.success("Successfully edited");
         } 
       } else {
         const response = await request.post("skills", skillData);
         if (response.status === 201) {
           getSkills();
           hideModal();
-          message.success('You can also check here')
+          message.success("Successfully added");
         }
       }
     } catch (err) {

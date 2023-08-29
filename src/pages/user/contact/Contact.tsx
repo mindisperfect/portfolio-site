@@ -25,11 +25,12 @@ const Contact = () => {
   const submit: SubmitHandler<FieldValues> = async (formData) => {
     console.log(formData);
     try {
-      await request.post("messages", formData);
+     await request.post("messages", formData);
       message.success("Your message successfully has sent to admin !");
     } catch (err) {
       if (err instanceof Error) {
         console.log(err);
+        message.error(err?.message)
       } else {
         toast.error("An error occurred.");
       }

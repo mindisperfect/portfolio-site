@@ -86,16 +86,19 @@ const About = () => {
       </section>
       <div className="separator"></div>
 
-      <section className="skills">
+      {/* <section className="skills">
         <h3 className="section__subtitle subtitle__center">My Education</h3>
         <div className="skills__container grid">
           <Experiences />
         </div>
       </section>
-      <div className="separator"></div>
+      <div className="separator"></div> */}
 
       <section className="resume">
+        <div className="title__grid">
         <h3 className="section__subtitle subtitle__center">Experience</h3>
+        <h3 className="section__subtitle subtitle__center">My Education</h3>
+        </div>
         <div className="resume__container grid">
           <div className="resume__data">
             {loading ? (
@@ -128,34 +131,7 @@ const About = () => {
             )}
           </div>
           <div className="resume__data">
-            {loading ? (
-              <Spin
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  paddingBottom: "50px",
-                }}
-                indicator={antIcon}
-              />
-            ) : (
-              experiences.map((val: ExperienceType) => {
-                return (
-                  <div className="resume__item" key={val._id}>
-                    <span className="resume__date">
-                      {val?.startDate.split("T")[0]} -{" "}
-                      {val?.endDate.split("T")[0]}
-                    </span>
-                    <h3 className="resume__subtitle">
-                      <b>Work name:</b> {val?.workName}
-                    </h3>
-                    <h3 className="resume__subtitle">
-                      <b>Company name:</b> {val?.companyName}
-                    </h3>
-                    <p className="resume__description">{val?.description}</p>
-                  </div>
-                );
-              })
-            )}
+          <Experiences />
           </div>
         </div>
       </section>

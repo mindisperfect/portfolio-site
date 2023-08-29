@@ -58,13 +58,14 @@ const ExperiencesP = () => {
         if (response.status === 200) {
           getExperiences();
           hideModal();
+          message.success("Successfully edited");
         }
       } else {
         const response = await request.post("experiences", experienceData);
         if (response.status === 201) {
           getExperiences();
           hideModal();
-          message.success("You can also check here");
+          message.success("Successfully added");
         }
       }
     } catch (err) {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PortfolioType } from "../../../types/types";
 import { request } from "../../../server/request";
-import { Empty } from "antd";
+import { Button, Empty } from "antd";
 import { IMG_URL } from "../../../constants";
 import { ROLE, USER_ID } from "../../../utils/setAuthCookies";
 
@@ -45,8 +45,14 @@ const PortfolioItem = () => {
             <div className="content__portfolio">
               <h1 className="modal__title">{skill?.name}</h1>
               <div className="conetss">
-              <Link to={skill?.url}><b>Link : </b>{skill?.url}</Link>
-              <p className="item__details"><b>Desc : </b>{skill?.description}</p>
+                <p className="item__details">
+                  {skill?.description}
+                </p>
+                <Button type="primary">
+                <Link to={skill?.url}>
+                  View more
+                </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -57,7 +63,3 @@ const PortfolioItem = () => {
 };
 
 export default PortfolioItem;
-
-
-
-

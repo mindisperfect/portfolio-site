@@ -9,11 +9,13 @@ const Experiences = () => {
 
   const getEducations = async () => {
     try {
-      const { data } = await request(`education${ROLE === "client" ? `?user[in]=${USER_ID}` : ""}`);
+      const { data } = await request(
+        `education${ROLE === "client" ? `?user[in]=${USER_ID}` : ""}`
+      );
       setExperiences(data?.data);
     } catch (err) {
       console.log(err);
-    } 
+    }
   };
 
   useEffect(() => {
@@ -22,23 +24,20 @@ const Experiences = () => {
 
   return (
     <>
-    {experiences.length == 0 ? <Empty /> : experiences?.map((skill: EducationType) => (
-        <div className="expereince__card" key={skill?._id}>
-          <h1>{skill?.name}</h1>
-          <h2>{skill?.level}</h2>
-          <p>{skill?.description}</p>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "20px",
-            }}
-          >
-            <p>{skill?.startDate.split("T")[0]}</p>
-            <p>{skill?.endDate.split("T")[0]}</p>
+      {experiences.length == 0 ? (
+        <Empty />
+      ) : (
+        experiences?.map((skill: EducationType) => (
+          <div className="resume__item" key={skill?._id}>
+            <span className="resume__date">
+              {skill?.startDate.split("T")[0]} - {skill?.endDate.split("T")[0]}
+            </span>
+            <h2 className="resume__subtitle"><b>Education name: </b>{skill?.name}</h2>
+            <h2 className="resume__subtitle"><b>Level: </b>{skill?.level}</h2>
+            <p className="resume__description">{skill?.description}</p>
           </div>
-        </div>
-      ))}
+        ))
+      )}
       ;
     </>
   );

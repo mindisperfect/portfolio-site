@@ -75,13 +75,14 @@ const PortfolioP = () => {
         if (response.status === 200) {
           getPortfolios();
           hideModal();
+          message.success("Successfully edited");
         }
       } else {
         const response = await request.post("portfolios", experienceData);
         if (response.status === 201) {
           getPortfolios();
           hideModal();
-          message.success("You can also check here");
+          message.success("Successfully added");
         }
       }
     } catch (err) {
@@ -260,24 +261,24 @@ const PortfolioP = () => {
                     src={`${IMG_URL + skill?.photo?._id}.${
                       skill?.photo?.name?.split(".")[1]
                     }`}
-                    alt="img"
+                    alt="shu yerda photoni idsi keldi lekin uni png yoki jpg haqidagi malumotini olb kelolmadm"
                     height={150}
                   />
                   <div className="content__portfolio">
-                  <h1>{skill?.name}</h1>
-                  <Link to={skill?.url}>{skill?.url}</Link>
-                  <p>{skill?.description}</p>
-                  <div className="btns">
-                    <Button
-                      type="primary"
-                      onClick={() => editSkill(skill?._id)}
-                    >
-                      Edit
-                    </Button>
-                    <Button danger onClick={() => deletePost(skill?._id)}>
-                      Delete
-                    </Button>
-                  </div>
+                    <h1>{skill?.name}</h1>
+                    <Link to={skill?.url}>{skill?.url}</Link>
+                    <p>{skill?.description}</p>
+                    <div className="btns">
+                      <Button
+                        type="primary"
+                        onClick={() => editSkill(skill?._id)}
+                      >
+                        Edit
+                      </Button>
+                      <Button danger onClick={() => deletePost(skill?._id)}>
+                        Delete
+                      </Button>
+                    </div>
                   </div>
                 </div>
               ))
