@@ -33,7 +33,8 @@ const LoginP = () => {
       }
     } catch (err) {
       if (err instanceof Error) {
-       console.log(err);    
+       console.log(err); 
+       message.error("Username or password is wrong !")   
       } else {
         console.log("error");    
       }

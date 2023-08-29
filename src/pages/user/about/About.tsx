@@ -20,8 +20,7 @@ const About = () => {
   const getExperiences = async () => {
     try {
       const { data } = await request(
-        `experiences${ROLE === "client" ? `?user[in]=${USER_ID}` : ""}`
-      );
+        `experiences${ROLE === "client" ? `?user[in]=${USER_ID}` : ""}`);
       setExperiences(data?.data);
       setLoading(true);
     } catch (err) {
