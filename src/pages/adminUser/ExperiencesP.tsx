@@ -126,7 +126,7 @@ const ExperiencesP = () => {
       <div className="container">
         <div className="slider-paragraph" style={{ marginTop: "40px" }}>
           <h2>My Experiences</h2>
-          <button onClick={openModal}>Add</button>
+          <button className="experience__btn" onClick={openModal}>Add</button>
         </div>
         <Modal
           title={selected ? "Editing experience" : "Adding new experience"}
@@ -227,7 +227,7 @@ const ExperiencesP = () => {
           />
         ) : null}
         <section className="skills">
-          <div className="skills__container grid" style={{ marginTop: "50px" }}>
+          <div className="skills__containers grid" style={{ marginTop: "50px" }}>
             {skills.length == 0
               ? "Nothing"
               : skills?.map((skill: ExperienceType) => (

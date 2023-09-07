@@ -79,6 +79,12 @@ border-radius: 5px;
     justify-items: center;
 }
 
+.skills__containers {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 48px;
+    justify-items: center;
+}
+
 .progress__circle {
     width: 120px;
     height: 120px;

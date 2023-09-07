@@ -1,17 +1,20 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { TiMessages } from "react-icons/ti";
-import {SiSkillshare} from "react-icons/si"
-import {MdOutlineCastForEducation, MdOutlineDashboardCustomize} from "react-icons/md"
+import { SiSkillshare } from "react-icons/si";
+import {
+  MdOutlineCastForEducation,
+  MdOutlineDashboardCustomize,
+} from "react-icons/md";
 import Cookies from "js-cookie";
-import {AiOutlineMessage, AiFillHome} from "react-icons/ai"
+import { AiOutlineMessage, AiFillHome } from "react-icons/ai";
 import { Layout, Menu, Button, theme, Avatar } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UserOutlined,
   VideoCameraOutlined,
-  DeleteOutlined
+  DeleteOutlined,
 } from "@ant-design/icons";
 import { TOKEN } from "../../../constants";
 
@@ -63,7 +66,7 @@ const AdminLayout = () => {
             },
             {
               key: "/skills",
-              icon: <SiSkillshare/>,
+              icon: <SiSkillshare />,
               label: <Link to="/skills">Skills</Link>,
             },
             {
@@ -73,7 +76,7 @@ const AdminLayout = () => {
             },
             {
               key: "logout",
-              icon: <DeleteOutlined /> ,
+              icon: <DeleteOutlined />,
               label: (
                 <Button onClick={logout} type="primary" danger>
                   Logout
@@ -104,7 +107,7 @@ const AdminLayout = () => {
             }}
           />
           <div
-            className="notification"
+            className="notification container"
             style={{
               display: "flex",
               alignItems: "center",
@@ -117,10 +120,7 @@ const AdminLayout = () => {
             <Link to="/messages" style={{ marginRight: "20px" }}>
               <Avatar shape="square" size={40} icon={<TiMessages />} />
             </Link>
-            <Link
-              to="/admin-account"
-              style={{ marginRight: "210px", borderRadius: "50px" }}
-            >
+            <Link to="/admin-account" style={{ borderRadius: "50px" }}>
               <Avatar shape="square" size={40} icon={<UserOutlined />} />
             </Link>
           </div>
