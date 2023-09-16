@@ -21,7 +21,7 @@ const MessagesP = () => {
     <section className="message__section">
       {messages?.map((message: MessagesType) => {
         return (
-          <div className="expereince__card" key={message?._id}>
+          <div className="expereince__card" style={{marginTop: "10px"}} key={message?._id}>
             <h1>{message?.title}</h1>
             <p>{message?.user}</p>
             <p>{message?.message}</p>

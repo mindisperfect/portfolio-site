@@ -80,7 +80,7 @@
   //     box-shadow: 0px 2px 4px 0px silver;
   // }
   .progress__circle {
-    margin-left: 3px;
+   margin-left: 8px;
   }
 }
 
@@ -172,12 +172,22 @@
   max-width: 670px;
 }
 
+// .skills__title {
+//   margin-right: 20px;
+// }
+
 .box-right > .p-5 {
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
   color: #6d6e76;
   max-width: 670px;
+}
+
+.skills__containers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
 }
 
 @media (max-width: 1120px) {
@@ -187,7 +197,7 @@
   }
   .skills__containers {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .home-left {
     width: 100%;
@@ -213,9 +223,15 @@
   }
 }
 
+@media (max-width: 820px) {
+  .skills__containers {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 562px) {
   .skills__containers {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
 

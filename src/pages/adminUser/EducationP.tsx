@@ -221,37 +221,44 @@ const EducationP = () => {
           />
         ) : null}
         <section className="skills">
-          <div className="education__container grid" style={{ marginTop: "50px" }}>
-            {skills.length == 0
-              ? <div style={{display: "flex", justifyItems: "center"}}><Empty /></div>
-              : skills?.map((skill: EducationType) => (
-                  <div className="expereince__card" key={skill?._id}>
-                    <h1>{skill?.name}</h1>
-                    <h2>{skill?.level}</h2>
-                    <p>{skill?.description}</p>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "20px",
-                      }}
-                    >
-                      <p>{skill?.startDate.split("T")[0]}</p>
-                      <p>{skill?.endDate.split("T")[0]}</p>
-                    </div>
-                    <div className="btns">
-                      <Button
-                        type="primary"
-                        onClick={() => editSkill(skill?._id)}
-                      >
-                        Edit
-                      </Button>
-                      <Button danger onClick={() => deletePost(skill?._id)}>
-                        Delete
-                      </Button>
-                    </div>
+          <div
+            className="education__container grid"
+            style={{ marginTop: "50px" }}
+          >
+            {skills.length == 0 ? (
+              <div style={{ display: "flex", justifyItems: "center" }}>
+                <Empty />
+              </div>
+            ) : (
+              skills?.map((skill: EducationType) => (
+                <div className="expereince__card" key={skill?._id}>
+                  <h1>{skill?.name}</h1>
+                  <h2>{skill?.level}</h2>
+                  <p>{skill?.description}</p>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "20px",
+                    }}
+                  >
+                    <p>{skill?.startDate.split("T")[0]}</p>
+                    <p>{skill?.endDate.split("T")[0]}</p>
                   </div>
-                ))}
+                  <div className="btns">
+                    <Button
+                      type="primary"
+                      onClick={() => editSkill(skill?._id)}
+                    >
+                      Edit
+                    </Button>
+                    <Button danger onClick={() => deletePost(skill?._id)}>
+                      Delete
+                    </Button>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </section>
       </div>

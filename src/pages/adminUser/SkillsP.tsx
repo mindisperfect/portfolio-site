@@ -175,7 +175,7 @@ const SkillsP = () => {
           />
         ) : null}
         <section className="skills">
-          <div className="skills__container grid" style={{ marginTop: "50px" }}>
+          <div className="skills__containers grid" style={{ marginTop: "50px"}}>
             {skills.length == 0
               ? <Empty />
               : skills?.map((skill: SkillsType) => (
